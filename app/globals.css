@@ -1,0 +1,438 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+:root {
+  --ink: #0e1114;
+  --ink-elevated: #161b20;
+  --ink-line: #2a323a;
+  --paper: #e8e2d6;
+  --paper-dim: #c4bba8;
+  --paper-faint: #8a8274;
+  --accent: #c45c26;
+  --accent-soft: rgba(196, 92, 38, 0.15);
+  --danger: #d64545;
+  --danger-soft: rgba(214, 69, 69, 0.12);
+  --warn: #d4a017;
+  --warn-soft: rgba(212, 160, 23, 0.12);
+  --ok: #5a8f6a;
+  --ok-soft: rgba(90, 143, 106, 0.12);
+  --glass: rgba(232, 226, 214, 0.04);
+  --radius: 2px;
+  --font-display: "Libre Baskerville", "Georgia", serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--paper);
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 10% -20%, rgba(196, 92, 38, 0.08), transparent 50%),
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(232, 226, 214, 0.03), transparent 45%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 47px,
+      rgba(232, 226, 214, 0.015) 47px,
+      rgba(232, 226, 214, 0.015) 48px
+    );
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+.shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.masthead {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--ink-line);
+  animation: rise 0.7s ease-out both;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--paper);
+  margin: 0;
+}
+
+.brand span {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.tagline {
+  max-width: 36rem;
+  color: var(--paper-dim);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.privacy-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--ink-line);
+  background: var(--ok-soft);
+  color: var(--ok);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  width: fit-content;
+  animation: rise 0.7s ease-out 0.1s both;
+}
+
+.privacy-bar::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 0 3px var(--ok-soft);
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .grid-main {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+}
+
+.panel {
+  background: var(--glass);
+  border: 1px solid var(--ink-line);
+  padding: 1.25rem;
+  animation: rise 0.65s ease-out both;
+}
+
+.panel h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin: 0 0 0.85rem;
+  color: var(--paper);
+}
+
+.panel-meta {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper-faint);
+  margin-bottom: 0.5rem;
+}
+
+.token-input {
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  background: var(--ink-elevated);
+  border: 1px solid var(--ink-line);
+  color: var(--paper);
+  padding: 0.85rem;
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.token-input:focus {
+  border-color: var(--accent);
+}
+
+.token-input::placeholder {
+  color: var(--paper-faint);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  margin-top: 0.85rem;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--ink-line);
+  background: var(--ink-elevated);
+  color: var(--paper);
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover {
+  border-color: var(--paper-faint);
+  background: #1c2329;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #d46a32;
+  border-color: #d46a32;
+  color: var(--ink);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--paper-dim);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle input {
+  accent-color: var(--accent);
+}
+
+.demo-list {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.demo-card {
+  text-align: left;
+  width: 100%;
+  border: 1px dashed var(--ink-line);
+  background: transparent;
+  color: inherit;
+  padding: 0.75rem 0.85rem;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.demo-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.demo-card strong {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.demo-card p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--paper-faint);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--warn);
+  color: var(--warn);
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+.warnings {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.warning {
+  border-left: 3px solid var(--warn);
+  background: var(--warn-soft);
+  padding: 0.65rem 0.85rem;
+  font-size: 0.82rem;
+}
+
+.warning.critical {
+  border-left-color: var(--danger);
+  background: var(--danger-soft);
+  color: #f0c4c4;
+}
+
+.warning.warn {
+  color: #e8d5a0;
+}
+
+.warning.info {
+  border-left-color: var(--paper-faint);
+  background: var(--glass);
+  color: var(--paper-dim);
+}
+
+.warning code {
+  font-size: 0.78rem;
+}
+
+.json-block {
+  background: var(--ink-elevated);
+  border: 1px solid var(--ink-line);
+  padding: 0.85rem;
+  overflow-x: auto;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--paper-dim);
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.claims {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.claim {
+  border-bottom: 1px solid var(--ink-line);
+  padding-bottom: 0.65rem;
+}
+
+.claim:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.claim-key {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.claim-value {
+  font-weight: 500;
+  color: var(--paper);
+  word-break: break-word;
+}
+
+.claim-formatted {
+  font-size: 0.75rem;
+  color: var(--paper-faint);
+}
+
+.claim-explain {
+  margin: 0.25rem 0 0;
+  font-size: 0.78rem;
+  color: var(--paper-dim);
+}
+
+.display-token {
+  font-size: 0.72rem;
+  color: var(--paper-faint);
+  word-break: break-all;
+  margin: 0 0 1rem;
+  padding: 0.65rem;
+  background: var(--ink-elevated);
+  border: 1px solid var(--ink-line);
+}
+
+.footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ink-line);
+  color: var(--paper-faint);
+  font-size: 0.75rem;
+  animation: rise 0.7s ease-out 0.2s both;
+}
+
+.footer p {
+  margin: 0.35rem 0;
+}
+
+.split {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .split-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-line {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.scan-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin: 1rem 0;
+  animation: pulse-line 3s ease-in-out infinite;
+}
